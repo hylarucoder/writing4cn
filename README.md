@@ -8,7 +8,7 @@
 ctrl+shift+pangu+{enter}
 ```
 
-![预览](#)
+![预览](https://raw.githubusercontent.com/twocucao/writing4cn/master/screenshots/7sIrBbkcdo.gif)
 
 ## 参考实现
 
