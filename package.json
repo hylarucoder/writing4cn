@@ -1,0 +1,36 @@
+{
+    "name": "writing4cn",
+    "displayName": "writing4cn",
+    "description": "为什么你们就不能格式化一下你们的 Markdown 呢",
+    "version": "0.0.1",
+    "publisher": "twocucao",
+    "engines": {
+        "vscode": "^1.11.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "activationEvents": [
+        "onCommand:extension.reformatSelection4cn"
+    ],
+    "main": "./out/src/extension",
+    "contributes": {
+        "commands": [{
+            "command": "extension.reformatSelection4cn",
+            "title": "Writing4CN : Pangu Reformat"
+        }]
+    },
+    "scripts": {
+        "vscode:prepublish": "tsc -p ./",
+        "compile": "tsc -watch -p ./",
+        "postinstall": "node ./node_modules/vscode/bin/install",
+        "test": "node ./node_modules/vscode/bin/test"
+    },
+    "devDependencies": {
+        "typescript": "^2.0.3",
+        "vscode": "^1.0.0",
+        "mocha": "^2.3.3",
+        "@types/node": "^6.0.40",
+        "@types/mocha": "^2.2.32"
+    }
+}
