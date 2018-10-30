@@ -34,7 +34,7 @@ class DocumentFormatter{
     public updateDocument(){
         let editor = vscode.window.activeTextEditor;
         let doc = editor.document;
-                // Only update status if an Markdown file
+        // Only update status if an Markdown file
         if (doc.languageId === "markdown") {
             // 按照每行进行搞定
             vscode.window.activeTextEditor.edit((editorBuilder: vscode.TextEditorEdit) => {
@@ -43,16 +43,27 @@ class DocumentFormatter{
                 content = this.condenseContent(content);
                 content = this.replaceFullNums(content);
                 content = this.replaceFullChars(content);
+                // 标记是否位于代码区域内
+                let isInCodeArea = 0;
                 // 每行操作
                 content = content.split("\n").map((line: string) => {
+                    if (line.trim().startsWith("```")) {
+                        isInCodeArea = isInCodeArea == 0 ? 1 : 0;
+                    }
+
                     line = this.replacePunctuations(line);
-                    line = line.replace(/([\u4e00-\u9fa5\u3040-\u30FF])([a-zA-Z0-9@&=\[\$\%\^\-\+(\/\\])/g,'$1 $2')
+                    line = line.replace(/([\u4e00-\u9fa5\u3040-\u30FF])([a-zA-Z0-9@&=\[\$\%\^\-\+(\/\\])/g,'$1 $2');
                     line = line.replace(/([a-zA-Z0-9!&;=\]\,\.\:\?\$\%\^\-\+\)\/\\])([\u4e00-\u9fa5\u3040-\u30FF])/g, "$1 $2");
-                    line = line.replace(/[『\[]([^』\]]+)[』\]][『\[]([^』\]]+)[』\]]/g,"[$1]($2)")
-                    line = line.replace(/[『\[]([^』\]]+)[』\]][（(]([^』)]+)[）)]/g,"[$1]($2)")
+                    
+                    // 不在代码区域内才执行此项替换
+                    if (!(/`+[^`]*[『\[]([^』\]]+)[』\]][『\[]([^』\]]+)[』\]][^`]*`+/g.test(line)) && !isInCodeArea) {
+                        line = line.replace(/[『\[]([^』\]]+)[』\]][『\[]([^』\]]+)[』\]]/g,"[$1]($2)");
+                    }
+
+                    line = line.replace(/[『\[]([^』\]]+)[』\]][（(]([^』)]+)[）)]/g,"[$1]($2)");
                     return line;
-                }).join("\n")
-                
+                }).join("\n");
+
                 editorBuilder.replace(this.current_document_range(doc), content);
                 // editorBuilder.insert(doc.positionAt(0), 'hello World');
             })
