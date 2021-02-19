@@ -93,7 +93,7 @@ class DocumentFormatter{
         content = content.replace(/([\u4e00-\u9fa5\u3040-\u30FF。！])\]/g,'$1』');
         content = content.replace(/<([\u4e00-\u9fa5\u3040-\u30FF])/g,'《$1');
         content = content.replace(/([\u4e00-\u9fa5\u3040-\u30FF。！])>/g,'$1》');
-        content = content.replace(/。\{3,}/g,'......');
+        content = content.replace(/。{3,}/g,'\u2026\u2026');
         content = content.replace(/([！？])$1{3,}/g,'$1$1$1');
         content = content.replace(/([。，；：、“”『』〖〗《》])\1{1,}/g,'$1');
         return content;
