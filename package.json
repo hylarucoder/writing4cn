@@ -1,60 +1,62 @@
 {
-	"name": "writing4cn",
-	"displayName": "writing4cn",
-	"description": "为什么你们就不能格式化一下你们的 Markdown 呢",
-	"version": "0.2.1",
-	"engines": {
-		"vscode": "^1.53.0"
-	},
-	"categories": [
-		"Other"
-	],
-	"activationEvents": [
-		"onCommand:extension.reformatSelection4cn"
-	],
-	"main": "./dist/extension.js",
-	"contributes": {
-		"commands": [
-			{
-				"command": "extension.reformatSelection4cn",
-				"title": "Writing4CN : Pangu Reformat"
-			}
-		]
-	},
-	"scripts": {
-		"postinstall": "husky install",
-		"vscode:prepublish": "yarn run package",
-		"compile": "webpack",
-		"watch": "webpack --watch",
-		"package": "webpack --mode production --devtool hidden-source-map",
-		"test-compile": "tsc -p ./",
-		"test-watch": "tsc -watch -p ./",
-		"pretest": "yarn run test-compile && yarn run lint",
-		"lint": "eslint src --ext ts",
-		"test": "node ./out/test/runTest.js"
-	},
-	"devDependencies": {
-		"@types/glob": "^7.1.3",
-		"@types/mocha": "^8.0.4",
-		"@types/node": "^12.11.7",
-		"@types/vscode": "^1.53.0",
-		"@typescript-eslint/eslint-plugin": "^4.14.1",
-		"@typescript-eslint/parser": "^4.14.1",
-		"eslint": "^7.19.0",
-		"glob": "^7.1.6",
-		"husky": "^5.0.9",
-		"lint-staged": "^10.5.4",
-		"mocha": "^8.2.1",
-		"pinst": "^2.1.4",
-		"prettier": "^2.2.1",
-		"ts-loader": "^8.0.14",
-		"typescript": "^4.1.3",
-		"vscode-test": "^1.5.0",
-		"webpack": "^5.19.0",
-		"webpack-cli": "^4.4.0"
-	},
-	"lint-staged": {
-		"*.ts": "eslint --cache --fix",
-		"*.{ts,js,css,md}": "prettier --write"
-	}
+  "name": "writing4cn",
+  "displayName": "writing4cn",
+  "description": "为什么你们就不能格式化一下你们的 Markdown 呢",
+  "version": "0.2.1",
+  "publisher": "twocucao",
+  "repository": "https://github.com/twocucao/writing4cn",
+  "engines": {
+    "vscode": "^1.53.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:extension.reformatSelection4cn"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "extension.reformatSelection4cn",
+        "title": "Writing4CN : Pangu Reformat"
+      }
+    ]
+  },
+  "scripts": {
+    "postinstall": "husky install",
+    "vscode:prepublish": "yarn run package",
+    "compile": "webpack",
+    "watch": "webpack --watch",
+    "package": "webpack --mode production --devtool hidden-source-map",
+    "test-compile": "tsc -p ./",
+    "test-watch": "tsc -watch -p ./",
+    "pretest": "yarn run test-compile && yarn run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/glob": "^7.1.3",
+    "@types/mocha": "^8.0.4",
+    "@types/node": "^12.11.7",
+    "@types/vscode": "^1.53.0",
+    "@typescript-eslint/eslint-plugin": "^4.14.1",
+    "@typescript-eslint/parser": "^4.14.1",
+    "eslint": "^7.19.0",
+    "glob": "^7.1.6",
+    "husky": "^5.0.9",
+    "lint-staged": "^10.5.4",
+    "mocha": "^8.2.1",
+    "pinst": "^2.1.4",
+    "prettier": "^2.2.1",
+    "ts-loader": "^8.0.14",
+    "typescript": "^4.1.3",
+    "vscode-test": "^1.5.0",
+    "webpack": "^5.19.0",
+    "webpack-cli": "^4.4.0"
+  },
+  "lint-staged": {
+    "*.ts": "eslint --cache --fix",
+    "*.{json,ts,js,css,md}": "prettier --write"
+  }
 }
