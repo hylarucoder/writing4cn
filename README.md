@@ -1,6 +1,6 @@
-# writing4cn 
+# writing4cn
 
-这是什么? 这是一个给写markdown的程序员的中文格式化方案
+这是什么？这是一个给写 markdown 的程序员的中文格式化方案
 
 > 给 **以 Markdown 为编写主要文字格式的程序员** 一些更方便的功能
 

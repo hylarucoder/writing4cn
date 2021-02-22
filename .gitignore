@@ -1,2 +1,5 @@
+.DS_Store
 out
 node_modules
+dist/
+writing4cn*.vsix
