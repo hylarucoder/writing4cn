@@ -47,13 +47,13 @@ class DocumentFormatter {
         content = this.replaceFullNums(content);
         content = this.replaceFullChars(content);
         // 标记是否位于代码区域内
-        let isInCodeArea = 0;
+        let isInCodeArea = false;
         // 每行操作
         content = content
           .split("\n")
           .map((line: string) => {
             if (line.trim().startsWith("```")) {
-              isInCodeArea = isInCodeArea == 0 ? 1 : 0;
+              isInCodeArea = !isInCodeArea;
             }
 
             line = this.replacePunctuations(line);
