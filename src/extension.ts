@@ -90,7 +90,6 @@ class DocumentFormatter {
         editorBuilder.replace(this.current_document_range(doc), content);
         // editorBuilder.insert(doc.positionAt(0), 'hello World');
       });
-    } else {
     }
   }
   protected current_document_range(doc: vscode.TextDocument) {
