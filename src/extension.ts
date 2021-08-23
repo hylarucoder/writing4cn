@@ -48,12 +48,16 @@ class DocumentFormatter {
         content = this.replaceFullChars(content);
         // 标记是否位于代码区域内
         let isInCodeArea = false;
+        let existImageOrLinkArea = false;
         // 每行操作
         content = content
           .split("\n")
           .map((line: string) => {
             if (line.trim().startsWith("```")) {
               isInCodeArea = !isInCodeArea;
+            }
+            if (!/!?\[.*?\]\(.+?\)/.test(line)) {
+              existImageOrLinkArea = true;
             }
 
             line = this.replacePunctuations(line);
@@ -83,6 +87,14 @@ class DocumentFormatter {
               /[『\[]([^』\]]+)[』\]][（(]([^』)]+)[）)]/g,
               "[$1]($2)"
             );
+
+            if (existImageOrLinkArea) {
+              const imgOrLinks = line.match(/!?\[.*?\]\(.+?\)/g);
+              imgOrLinks?.forEach((e) => {
+                line = line.replace(e, e.replace(/ /g, "").replace("。", "."));
+              });
+            }
+
             return line;
           })
           .join("\n");
